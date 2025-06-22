@@ -1,0 +1,251 @@
+/* Estilos base */
+body {
+  font-family: 'Lora', serif;
+  margin: 0;
+  padding: 20px;
+  background-color: #fff;
+  color: #333;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1, h2 {
+  text-align: center;
+}
+
+.subtitulo {
+  text-align: center;
+  font-style: italic;
+  margin-top: -10px;
+  color: #555;
+}
+
+/* Contenedor tri panel */
+.tri-panel {
+  display: flex;
+  gap: 30px;
+  max-width: 1300px;
+  margin: auto;
+  padding: 20px 10px;
+  box-sizing: border-box;
+  min-height: 80vh;
+}
+
+/* Paneles */
+.panel-izquierdo,
+.panel-central,
+.panel-derecho {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  box-sizing: border-box;
+  box-shadow: 0 2px 6px rgb(0 0 0 / 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Ancho relativo */
+.panel-izquierdo,
+.panel-derecho {
+  flex: 1;
+}
+
+.panel-central {
+  flex: 1.5;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .tri-panel {
+    flex-direction: column;
+  }
+  .panel-izquierdo,
+  .panel-central,
+  .panel-derecho {
+    flex: unset;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
+
+/* Acordeón estilos */
+.acordeon-btn {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 12px 15px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  transition: background-color 0.3s;
+  font-size: 1.1em;
+  border-radius: 6px;
+  margin-bottom: 5px;
+}
+
+.acordeon-btn:hover,
+.acordeon-btn.activo {
+  background-color: #d6caa7;
+}
+
+.panel {
+  padding: 10px 15px;
+  display: none;
+  background-color: #fefefe;
+  border-left: 4px solid #d6caa7;
+  margin-bottom: 12px;
+  border-radius: 0 6px 6px 0;
+  font-size: 0.95em;
+  line-height: 1.4em;
+}
+
+/* Textarea */
+textarea {
+  width: 100%;
+  padding: 12px;
+  font-size: 1em;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  resize: vertical;
+  font-family: 'Lora', serif;
+  box-sizing: border-box;
+}
+
+/* Botón guardar */
+button {
+  margin-top: 12px;
+  padding: 12px 25px;
+  background-color: #6c584c;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.1em;
+  transition: background-color 0.3s;
+  align-self: flex-start;
+}
+
+button:hover {
+  background-color: #8a6f5b;
+}
+
+/* Imágenes decorativas */
+.decoracion-simbolica img {
+  width: 80px;
+  margin: 15px 0;
+  opacity: 0.15;
+  user-select: none;
+  pointer-events: none;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Footer */
+footer {
+  margin-top: auto;
+  text-align: center;
+  font-size: 0.9em;
+  color: #888;
+  padding-top: 15px;
+  border-top: 1px solid #ddd;
+}
+
+/* Fondo base */
+body {
+  transition: background 0.6s ease;
+}
+
+body.tema-presencia {
+  background-color: #fefefe;
+  color: #333;
+}
+
+body.tema-sabiduria {
+  background-color: #f1f5e3;
+  color: #3b3b2f;
+}
+
+body.tema-luz {
+  background-color: #fffdf2;
+  color: #333;
+}
+
+body.tema-raiz {
+  background-color: #f3ede3;
+  color: #4b3f30;
+}
+
+body.tema-amor {
+  background-color: #fff1f3;
+  color: #8a3c3c;
+}
+
+body.tema-justicia {
+  background-color: #e9f0f6;
+  color: #2c3e50;
+}
+.modo-oscuro {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+.modo-oscuro textarea {
+  background-color: #1e1e1e;
+  color: #f5f5f5;
+}
+
+.modo-oscuro .panel-izquierdo,
+.modo-oscuro .panel-central,
+.modo-oscuro .panel-derecho {
+  background-color: #1a1a1a;
+  color: #e0e0e0;
+}
+
+.modo-oscuro .acordeon-btn {
+  background-color: #2c2c2c;
+  color: #eee;
+}
+
+.respiracion-circulo {
+  margin: 0 auto;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: #d6caa7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  animation: respirar 6s ease-in-out infinite;
+}
+
+@keyframes respirar {
+  0%   { transform: scale(1);   content: "Inhala"; }
+  50%  { transform: scale(1.5); }
+  100% { transform: scale(1);   content: "Exhala"; }
+}
+
+.virtud-dia {
+  margin-top: 2rem;
+  padding: 1rem;
+  background-color: #f5f4ee;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.virtud-dia button {
+  margin-top: 0.5rem;
+  background-color: #b39ddb;
+  border: none;
+  padding: 0.4rem 1rem;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
+
+

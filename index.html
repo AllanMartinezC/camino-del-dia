@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Camino del Día</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet" />
+  <style>
+    .encabezado-general {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .frase-general {
+      font-style: italic;
+      color: #555;
+    }
+    .panel-central.seccion-oculta {
+      display: none;
+    }
+    .panel-central.seccion-activa {
+      display: flex;
+      flex-direction: column;
+    }
+    .panel-derecho {
+      padding: 1rem;
+    }
+    #virtudTexto {
+      background: #f9f9f9;
+      padding: 0.8em;
+      margin: 1em 0;
+      border-radius: 8px;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <button id="modoNoche">🌙</button>
+
+  <header class="encabezado-general">
+    <h1>Camino del Día</h1>
+    <p class="subtitulo">Un espacio para cultivar tu interior día a día</p>
+    <p class="frase-general">Hoy es un buen día para reflexionar y escuchar de Dios.</p>
+  </header>
+
+  <div class="tri-panel">
+    <!-- PANEL IZQUIERDO -->
+    <div class="panel-izquierdo">
+      <section class="habitos">
+        <h2>Prácticas de hoy</h2>
+        <div class="acordeon">
+          <button class="acordeon-btn" onclick="irAOracion()">🙏 Oración</button>
+          <div class="panel"><p>Lee una oración inspiradora o escribe la tuya.</p></div>
+
+          <button class="acordeon-btn" onclick="irALectura()">📖 Lectura espiritual</button>
+          <div class="panel"><p>Explora los libros de la Biblia y nutre tu espíritu.</p></div>
+
+          <button class="acordeon-btn" onclick="irAMeditacion()">🧘 Meditación</button>
+          <div class="panel"><p>Respira profundo. Siente tu cuerpo. Repite: “Estoy en paz”.</p></div>
+
+          <button class="acordeon-btn" onclick="irAAccion()">⚡ Acción con propósito</button>
+          <div class="panel"><p>Haz una acción desinteresada hoy. Sirve desde el corazón.</p></div>
+        </div>
+
+        <section class="tema">
+          <h2>Tema</h2>
+          <select id="temaSelector" onchange="cambiarTema()">
+            <option value="presencia">Presencia</option>
+            <option value="sabiduria">Sabiduría</option>
+            <option value="esperanza">Esperanza</option>
+            <option value="gratitud">Gratitud</option>
+            <option value="amor">Amor</option>
+            <option value="justicia">Justicia</option>
+          </select>
+        </section>
+      </section>
+    </div>
+
+    <!-- PANEL CENTRAL -->
+    <div class="panel-central" id="panelReflexion">
+      <section class="frase"><p id="fraseDelDía"></p></section>
+      <section class="reflexion">
+        <h2>Reflexión del día</h2>
+        <textarea id="reflexionTexto" rows="5" placeholder="Escribe lo que sentiste hoy..."></textarea>
+        <button onclick="guardarDatos()">Guardar</button>
+      </section>
+      <footer><p>Desarrollado con intención para el bienestar interior ✨</p></footer>
+    </div>
+
+    <div class="panel-central seccion-oculta" id="lecturaSeccion">
+      <h2>📖 Libros de la Biblia</h2>
+      <select id="libroBiblia" onchange="mostrarCita()">
+        <option value="">-- Elegir un libro --</option>
+        <option value="salmos">Salmos</option>
+        <option value="proverbios">Proverbios</option>
+        <option value="mateo">Mateo</option>
+        <option value="juan">Juan</option>
+        <option value="romanos">Romanos</option>
+      </select>
+      <div id="citaBiblica" class="texto-biblico"></div>
+      <button onclick="volver()">← Volver al menú</button>
+    </div>
+
+    <div class="panel-central seccion-oculta" id="oracionSeccion">
+      <h2>🙏 Oración del día</h2>
+      <p id="oracionDelDia"></p>
+      <h3>Escribe tu propia oración</h3>
+      <textarea id="oracionPersonal" rows="4" placeholder="Gracias por este día..."></textarea>
+      <button onclick="guardarOracionPersonal()">Guardar mi oración</button>
+      <button onclick="volver()">← Volver al menú</button>
+    </div>
+
+    <div class="panel-central seccion-oculta" id="meditacionSeccion">
+      <h2>🧘 Meditación guiada</h2>
+      <p>Respira con calma siguiendo el ritmo:</p>
+      <div id="guiaRespiracion" class="respiracion-circulo">Inhala</div>
+      <button onclick="volver()">← Volver al menú</button>
+    </div>
+
+    <div class="panel-central seccion-oculta" id="accionSeccion">
+      <h2>⚡ Acción con propósito</h2>
+      <p id="accionDelDia">Aquí aparecerá una acción inspiradora...</p>
+      <button onclick="nuevaAccion()">Otra acción</button>
+      <button onclick="volver()">← Volver al menú</button>
+    </div>
+
+    <!-- PANEL DERECHO -->
+    <div class="panel-derecho">
+
+      <section class="proposito">
+        <h2>🎯 Recuerda tu propósito</h2>
+        <p id="versiculoProposito"></p>
+
+        <label for="habilidadUsuario"><strong>¿En qué soy bueno?</strong></label>
+        <select id="habilidadUsuario" onchange="mostrarInspiracion()">
+          <option value="">Selecciona una habilidad</option>
+          <option value="musica">La música</option>
+          <option value="escuchar">Escuchar a otros</option>
+          <option value="deportes">Los deportes</option>
+          <option value="escribir">Escribir</option>
+          <option value="servir">Servir a los demás</option>
+        </select>
+
+        <p id="inspiracionHabilidad" style="margin-top: 1em;"></p>
+      </section>
+
+      <section class="virtud-diaria">
+        <h2>🌿 Virtud del día</h2>
+        <p id="virtudTexto">Haz clic para descubrir tu virtud del día.</p>
+        <button onclick="mostrarVirtud()">Mostrar virtud</button>
+      </section>
+
+      
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
