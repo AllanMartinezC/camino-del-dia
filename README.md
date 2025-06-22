@@ -2,7 +2,7 @@
 
 **Camino del Día** es una aplicación liviana desarrollada en HTML, CSS y JavaScript puro, diseñada para fomentar hábitos espirituales basados en la Biblia y de reflexión interior.
 
-![Vista previa de Camino del Día](preview.png)
+![Vista previa de Camino del Día](imagen.png)
 
 ## ✨ Propósito
 
